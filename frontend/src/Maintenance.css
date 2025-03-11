@@ -1,0 +1,147 @@
+.maintenance-container {
+  max-width: 1200px;
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.maintenance-header {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.maintenance-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 20px;
+}
+
+.form-section {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.maintenance-container label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 500;
+}
+
+/* Common styles for all form inputs */
+.maintenance-container select,
+.maintenance-container input,
+.maintenance-container textarea {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+/* Specific adjustments for select dropdowns */
+.maintenance-container select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 1em;
+  padding-right: 40px;
+}
+
+/* Specific adjustments for number inputs */
+.maintenance-container input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.maintenance-container input[type="number"]::-webkit-outer-spin-button,
+.maintenance-container input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Specific adjustments for textarea */
+.maintenance-container textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Focus states for all inputs */
+.maintenance-container select:focus,
+.maintenance-container input:focus,
+.maintenance-container textarea:focus {
+  outline: none;
+  border-color: #987349;
+  box-shadow: 0 0 0 2px rgba(152, 115, 73, 0.2);
+}
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  background-color: white;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.checklist-item:hover {
+  background-color: #f0f0f0;
+}
+
+.checklist-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+.submit-button {
+  grid-column: 1 / -1;
+  padding: 12px 24px;
+  background-color: #987349;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.submit-button:hover {
+  background-color: #7d5f3c;
+}
+
+@media (max-width: 768px) {
+  .maintenance-form {
+    grid-template-columns: 1fr;
+  }
+
+  .maintenance-container {
+    margin: 60px 10px;
+  }
+}

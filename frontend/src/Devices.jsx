@@ -1,20 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import devicesList from './services/devicesList';
 import './Devices.css';
 
 const Devices = () => {
-  // Group devices by section
-  const sectionDevices = devicesList.reduce((acc, device) => {
-    if (!acc[device.sectionName]) {
-      acc[device.sectionName] = [];
+  const location = useLocation();
+  const [filteredSections, setFilteredSections] = useState({});
+  const isSectionSpecific = !!location.state?.selectedSection;
+  
+  useEffect(() => {
+    // Group devices by section
+    const sectionDevices = devicesList.reduce((acc, device) => {
+      if (!acc[device.sectionName]) {
+        acc[device.sectionName] = [];
+      }
+      acc[device.sectionName].push(device);
+      return acc;
+    }, {});
+
+    // If a section was selected from dashboard, only show that section
+    if (location.state?.selectedSection) {
+      const selectedSection = location.state.selectedSection;
+      setFilteredSections({
+        [selectedSection]: sectionDevices[selectedSection]
+      });
+    } else {
+      setFilteredSections(sectionDevices);
     }
-    acc[device.sectionName].push(device);
-    return acc;
-  }, {});
+  }, [location.state]);
 
   return (
-    <div className="devices">
-      {Object.entries(sectionDevices).map(([sectionName, devices]) => (
+    <div className={`devices ${isSectionSpecific ? 'section-specific' : ''}`}>
+      {Object.entries(filteredSections).map(([sectionName, devices]) => (
         <div key={sectionName} className="section-container">
           <h2 className="section-title">{sectionName}</h2>
           <div className="devices-grid">

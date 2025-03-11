@@ -1,61 +1,81 @@
 .dashboard {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-    margin-top: 270px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .section-card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  margin-top: 270px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.section-card h2 {
+  text-align: center;
+  margin: 0;
+  padding-bottom: 1rem;
+  color: #333;
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+}
+
+.section-card ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+}
+
+.section-card li {
+  margin-bottom: 0.5rem;
+  color: #666;
+}
+
+.section-card li strong {
+  color: #333;
+  margin-right: 0.5rem;
+}
+
+/* Add responsive design for smaller screens */
+@media (max-width: 1200px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+    max-width: 700px;
+    padding: 1rem;
     gap: 1rem;
-  }
-  
-  .section-card h2 {
-    text-align: center;
-    margin: 0;
-    padding-bottom: 1rem;
-  }
-  
-  .charts {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .section-card ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 1rem 0 0 0;
-  }
-  
-  .section-card li {
-    margin-bottom: 0.5rem;
+    margin-top: 80px;
   }
 
-  /* Add responsive design for smaller screens */
-  @media (max-width: 1200px) {
-    .dashboard {
-      grid-template-columns: 1fr;
-      max-width: 700px;
-      padding: 1rem;
-      gap: 1rem;
-      margin-top: 80px;
-    }
-    
-    .charts {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
+  .charts {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    margin-top: 350px;
+  }
+}

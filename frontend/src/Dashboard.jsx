@@ -1,11 +1,14 @@
 import React from 'react';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { useNavigate } from 'react-router-dom';
 import devicesList from './services/devicesList';
 import './Dashboard.css';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   // Prepare data for the charts
   const sectionData = devicesList.reduce((acc, device) => {
     const section = acc.find(sec => sec.name === device.sectionName);
@@ -19,6 +22,10 @@ const Dashboard = () => {
     }
     return acc;
   }, []);
+
+  const handleSectionClick = (sectionName) => {
+    navigate('/devices', { state: { selectedSection: sectionName } });
+  };
 
   return (
     <div className="dashboard">
@@ -40,7 +47,11 @@ const Dashboard = () => {
         ];
 
         return (
-          <div key={index} className="section-card">
+          <div 
+            key={index} 
+            className="section-card"
+            onClick={() => handleSectionClick(section.name)}
+          >
             <h2>{section.name}</h2>
             <div className="charts">
               <PieChart width={200} height={200}>
